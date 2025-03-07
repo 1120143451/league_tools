@@ -5,14 +5,14 @@
         <el-col :span="24">
           <el-card :body-style="{padding: '15px'}">
             <el-row :gutter="10" type="flex">
-              <el-col :span="8">
+              <el-col :span="24">
                 <el-form :inline="true" id="login-form">
                   <el-select
                       v-model="league_selected"
                       @change="leagueChange"
                       multiple
                       collapse-tags
-                      style="width: 60%;"
+                      style="width: 300px"
                       placeholder="请选择">
                     <el-option
                         v-for="item in league_list"
@@ -27,12 +27,10 @@
                   <el-form-item>
                     <el-button type="primary" @click="getTableData(true)">获取比赛</el-button>
                   </el-form-item>
+                  <el-form-item>
+                    <el-button type="danger" plain>开启监控</el-button>
+                  </el-form-item>
                 </el-form>
-              </el-col>
-
-              <el-col :span="2">
-                <!--                <el-button type="danger" plain>开启监控</el-button>-->
-<!--                <el-button type="success" plain @click="getTableData()">获取今日比赛</el-button>-->
               </el-col>
             </el-row>
 
@@ -123,17 +121,33 @@
           </el-card>
         </el-col>
       </el-row>
-      <el-row ref="footerRow" style="height: 260px">
-        <el-col :span="24">
+      <el-row ref="footerRow" style="height: 260px" :gutter="5">
+        <el-col :span="12">
           <el-card style="height: 260px;"
                    ref="footCard"
-                   :body-style="{ padding: '15px', overflow: 'auto', height: '100%', boxSizing: 'border-box'}" >
-            <div v-if="logs_list.length > 0">
-              <div :style="{color: getColor(log.color)}" v-for="(log, index) in logs_list" :key="index">
+                   :body-style="{ padding: '15px', display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box'}" >
+            <div style="font-size: 18px;font-weight: bolder;padding-bottom: 10px;text-align: center;">让球盘日志</div>
+            <div v-if="lets_logs.length > 0" style="overflow:auto">
+              <div :style="{color: getColor(log.color)}" v-for="(log, index) in lets_logs" :key="index">
                 【 {{ log.czsj }} 】{{ log.league }} {{ log.team_1 }} VS {{ log.team_2 }} 赔率从 {{ log.odds_val_db }} ~ {{ log.odds_val_now }} {{upDownSymbol[log.direction]}} {{ log.diff }}
               </div>
             </div>
-            <div v-if="logs_list.length <= 0">
+            <div v-if="lets_logs.length <= 0">
+              <div>暂时无日志</div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="12">
+          <el-card style="height: 260px;"
+                   ref="footCard"
+                   :body-style="{ padding: '15px', display: 'flex', flexDirection: 'column', height: '100%', boxSizing: 'border-box'}" >
+            <div style="font-size: 18px;font-weight: bolder;padding-bottom: 10px;text-align: center;">大小盘日志</div>
+            <div v-if="sizes_logs.length > 0" style="overflow:auto">
+              <div :style="{color: getColor(log.color)}" v-for="(log, index) in lets_logs" :key="index">
+                【 {{ log.czsj }} 】{{ log.league }} {{ log.team_1 }} VS {{ log.team_2 }} 赔率从 {{ log.odds_val_db }} ~ {{ log.odds_val_now }} {{upDownSymbol[log.direction]}} {{ log.diff }}
+              </div>
+            </div>
+            <div v-if="lets_logs.length <= 0">
               <div>暂时无日志</div>
             </div>
           </el-card>
@@ -145,6 +159,7 @@
 
 <script>
 import axios from 'axios';
+import Mock from 'mockjs'
 
 export default {
   name: 'App',
@@ -162,6 +177,8 @@ export default {
       password: "",
       spanArr: [],
       position: 0,
+      lets_logs: [], // 让球盘日志
+      sizes_logs: [], // 大小盘日志
       league_list: [], // 联赛列表
       league_selected: [], // 选中联赛列表
       apiUrl: "http://8.138.17.106:8999",
@@ -177,6 +194,7 @@ export default {
     document.title = '联赛工具';
     this.handleResize();
     this.get_league();
+    this.getLogData();
     // this.getTableData();
     this.getLogMaxDate();
     // 监听窗口大小变化事件
@@ -236,6 +254,7 @@ export default {
       return '';
     },
     get_league() {
+      this.league_selected = [];
       let league_list = [];
       axios.request({
         method: 'post',
@@ -878,189 +897,57 @@ export default {
         this.logMaxDate = ""
       }
     },
+    mockLogData() {
+      // 定义可能的值数组
+      let platforms = ['平博'];
+      let leagues = ['阿塞拜疆 - 甲级联赛'];
+      let team1s = ['巴库MOIK'];
+      let team2s = ['洛克巴坦卡拉巴赫'];
+      let typenames = ['输赢盘', '让球盘', '大小盘'];
+      let keys = ['odds_team_1', 'odds_team_2', 'odds_and'];
+      let directions = ['上升', '下降'];
+
+      // 定义数据模板
+      let dataTemplate = {
+        'list|20': [
+          {
+            'platform': () => Mock.Random.pick(platforms),
+            'id': () => Mock.Random.string('number', 10),
+            'timestamp': () => Mock.Random.date('T'),
+            'date_str': () => Mock.Random.date('yyyy-MM-dd'),
+            'time_str': () => Mock.Random.time('HH:mm:ss'),
+            'league': () => Mock.Random.pick(leagues),
+            'team_1': () => Mock.Random.pick(team1s),
+            'team_2': () => Mock.Random.pick(team2s),
+            'typename': () => Mock.Random.pick(typenames),
+            'key': () => Mock.Random.pick(keys),
+            'odds_val_now': () => (Math.random() * 5 + 1).toFixed(3),
+            'direction': () => Mock.Random.pick(directions),
+            'odds_val_db': function () {
+              const now = parseFloat(this.odds_val_now);
+              const diff = Math.random() * 0.1;
+              return (this.direction === '上升' ? now - diff : now + diff).toFixed(3);
+            },
+            'diff': function () {
+              return (Math.abs(parseFloat(this.odds_val_now) - parseFloat(this.odds_val_db))).toFixed(3);
+            },
+            'color': function () {
+              return this.direction === '上升' ? '红色' : '绿色';
+            },
+            'czsj': () => Mock.Random.datetime('yyyy-MM-dd HH:mm:ss')
+          }
+        ]
+      };
+
+      // 生成模拟数据
+      let mock_list = Mock.mock(dataTemplate);
+      console.log("mock_log_list", mock_list);
+      return mock_list['list'];
+    },
     async getLogData() {
-      let logs_list2 = [
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "输赢盘",
-          "key": "odds_team_1",
-          "odds_val_now": "2.06",
-          "odds_val_db": "2.07",
-          "diff": "0.01",
-          "color": "绿色",
-          "direction": "下降",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "输赢盘",
-          "key": "odds_team_2",
-          "odds_val_now": "2.84",
-          "odds_val_db": "2.85",
-          "diff": "0.01",
-          "color": "绿色",
-          "direction": "下降",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "输赢盘",
-          "key": "odds_and",
-          "odds_val_now": "3.56",
-          "odds_val_db": "3.51",
-          "diff": "0.05",
-          "color": "红色",
-          "direction": "上升",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "让球盘",
-          "key": "odds_team_1",
-          "odds_val_now": "1.826",
-          "odds_val_db": "1.833",
-          "diff": "0.007",
-          "color": "绿色",
-          "direction": "下降",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "让球盘",
-          "key": "odds_team_2",
-          "odds_val_now": "1.884",
-          "odds_val_db": "1.877",
-          "diff": "0.007",
-          "color": "红色",
-          "direction": "上升",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "大小盘",
-          "key": "odds_team_1",
-          "odds_val_now": "1.819",
-          "odds_val_db": "1.877",
-          "diff": "0.058",
-          "color": "绿色",
-          "direction": "下降",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "大小盘",
-          "key": "odds_team_2",
-          "odds_val_now": "1.884",
-          "odds_val_db": "1.833",
-          "diff": "0.051",
-          "color": "红色",
-          "direction": "上升",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "大小盘",
-          "key": "odds_team_2",
-          "odds_val_now": "1.884",
-          "odds_val_db": "1.833",
-          "diff": "0.051",
-          "color": "红色",
-          "direction": "上升",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "大小盘",
-          "key": "odds_team_2",
-          "odds_val_now": "1.884",
-          "odds_val_db": "1.833",
-          "diff": "0.051",
-          "color": "红色",
-          "direction": "上升",
-          "czsj": "2025-03-06 15:45:17"
-        },
-        {
-          "platform": "平博",
-          "id": "1605177219",
-          "timestamp": "1741255200000",
-          "date_str": "2025-03-06",
-          "time_str": "18:00:00",
-          "league": "阿塞拜疆 - 甲级联赛",
-          "team_1": "巴库MOIK",
-          "team_2": "洛克巴坦卡拉巴赫",
-          "typename": "大小盘",
-          "key": "odds_team_2",
-          "odds_val_now": "1.884",
-          "odds_val_db": "1.833",
-          "diff": "0.051",
-          "color": "红色",
-          "direction": "上升",
-          "czsj": "2025-03-06 15:45:17"
-        }
-      ]
+      this.lets_logs = this.mockLogData();
+      this.sizes_logs = this.mockLogData();
+      return;
       // this.logs_list = [];
       let logs_list = [];
       await axios.request({
@@ -1189,10 +1076,13 @@ body {
 }
 
 
-.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
+.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf, .el-table .el-table__cell.is-center {
   border-bottom: 2px solid #DCDFE6!important;
 }
 
+.el-table--border .el-table__cell, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixe {
+  border-right: 2px solid #DCDFE6!important;
+}
 /*.el-table__body {
   border-bottom: 1px solid #000!important;
 }
