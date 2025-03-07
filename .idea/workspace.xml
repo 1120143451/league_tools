@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8d841805-28bd-4752-946a-2a5be0771403" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/src/components/HelloWorld.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue2-element-project/vue.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/src/components/HelloWorld.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my-vue3-project/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pack_app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/pack_app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pack_app/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/pack_app/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pack_app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/pack_app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pack_app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/pack_app/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/my-vue2-element-project" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2tpiWzJk4uhi69lhAWOI6qGxdWA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.main.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "F:/WebCode/联赛工具/my-vue2-element-project/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.npm .executor": "Run",
+    "npm.serve.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "E:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\WebCode\联赛工具\my-vue2-element-project\src" />
+      <recent name="F:\WebCode\联赛工具\pack_app" />
+      <recent name="F:\WebCode\联赛工具" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.serve">
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/pack_app/main.js" working-dir="$PROJECT_DIR$/pack_app">
+      <method v="2" />
+    </configuration>
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/my-vue2-element-project/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <EXTENSION ID="com.intellij.lang.javascript.buildTools.npm.rc.StartBrowserRunConfigurationExtension">
+        <browser name="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" with-js-debugger="true" url="http://localhost:8080" />
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.main.js" />
+      <item itemvalue="npm.serve" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.serve" />
+        <item itemvalue="Node.js.main.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="8d841805-28bd-4752-946a-2a5be0771403" name="更改" comment="" />
+      <created>1741055452474</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741055452474</updated>
+      <workItem from="1741055453629" duration="466000" />
+      <workItem from="1741055940162" duration="68572000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

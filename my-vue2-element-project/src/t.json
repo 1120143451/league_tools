@@ -1,0 +1,104 @@
+{
+  "id": "1605611389",
+  "league": "危地马拉 - 全国联赛",
+  "team_1": "Deportivo Xinabajul",
+  "team_2": "马昆斯",
+  "date_str": "2025-03-06",
+  "time_str": "11:00:00",
+  "all": {
+    "odds_team_1": "1.934",
+    "odds_team_2": "4.060",
+    "odds_and": "3.240",
+    "change": {
+      "odds_team_1": {
+        "odds_team_1": {
+          "odds_now": 1.934,
+          "odds_old": 1.862,
+          "diff": 0.07199999999999984,
+          "color": "红色",
+          "direction": "上升"
+        }
+      },
+      "odds_team_2": {
+        "odds_team_2": {
+          "odds_now": 4.06,
+          "odds_old": 4.26,
+          "diff": 0.20000000000000018,
+          "color": "绿色",
+          "direction": "下降"
+        }
+      },
+      "odds_and": {
+        "odds_and": {
+          "odds_now": 3.24,
+          "odds_old": 3.33,
+          "diff": 0.08999999999999986,
+          "color": "绿色",
+          "direction": "下降"
+        }
+      }
+    }
+  },
+  "lets": {
+    "odds_team_1": "1.934",
+    "odds_team_2": "1.884",
+    "let": "0.5",
+    "let_team": "team_1",
+    "change": {
+      "odds_team_1": {
+        "odds_team_1": {
+          "odds_now": 1.934,
+          "odds_old": 1.862,
+          "diff": 0.07199999999999984,
+          "color": "红色",
+          "direction": "上升"
+        }
+      },
+      "odds_team_2": {
+        "odds_team_2": {
+          "odds_now": 1.884,
+          "odds_old": 1.952,
+          "diff": 0.06800000000000006,
+          "color": "绿色",
+          "direction": "下降"
+        }
+      }
+    }
+  },
+  "sizes": {
+    "odds_team_1": "2.020",
+    "odds_team_2": "1.813",
+    "range": "2-2.5",
+    "size": "小",
+    "change": {
+      "odds_team_1": {
+        "odds_team_1": {
+          "odds_now": 2.02,
+          "odds_old": 1.97,
+          "diff": 0.050000000000000044,
+          "color": "红色",
+          "direction": "上升"
+        }
+      },
+      "odds_team_2": {
+        "odds_team_2": {
+          "odds_now": 1.813,
+          "odds_old": 1.854,
+          "diff": 0.04100000000000015,
+          "color": "绿色",
+          "direction": "下降"
+        }
+      }
+    }
+  },
+  "explain": {
+    "league": "联赛",
+    "team_1": "队伍一",
+    "team_2": "队伍二",
+    "date_str": "年月日",
+    "time_str": "时分秒",
+    "all": "输赢盘 ，odds_team_1 队一赢，odds_team_2 队二赢，odds_and 和局",
+    "lets": "让球盘，odds_team_1 队一赢，odds_team_2 队二赢，let 让球数 ，let_team ： team_1 or team_2",
+    "sizes": "大小盘,odds_team_1 队一赢，odds_team_2 队二赢，range 范围，size 大小"
+  }
+}
